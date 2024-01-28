@@ -1,0 +1,174 @@
+:root {
+  --color-primary: hsl(180, 29%, 50%);
+  --color-neutral-background: hsl(180, 52%, 96%);
+  --color-neutral-light-grayish-cyan-filter-tablets: hsl(180, 31%, 95%);
+  --color-neutral-dark-grayish-cyan: hsl(180, 8%, 52%);
+  --color-neutral-very-dark-grayish-cyan: hsl(180, 14%, 20%);
+
+  --font-size-body: 15px;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+h1, p, button{
+  font-size: var(--font-size-body);
+  font-family: 'League Spartan', sans-serif;
+}
+
+h1 {
+  font-size: 20px
+}
+
+
+header img{
+  width: 100%;
+  background-color: var(--color-primary);
+  background-repeat: no-repeat;
+}
+
+main {
+  padding-top: 60px;
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: var(--color-neutral-background);
+}
+
+.filter-menu {
+  display: flex;
+}
+
+.job-card, .filter-menu {
+  /* border: 2px solid blue; */
+  display: flex;
+
+  background-color: white;
+
+  width: 60%;
+
+  justify-content: space-between;
+  align-items: center;
+
+  -webkit-box-shadow: 0px 10px 30px -6px var(--color-primary);
+  -moz-box-shadow: 0px 10px 30px -6px var(--color-primary);
+  box-shadow: 0px 10px 30px -6px var(--color-primary);
+  
+  padding: 2rem;
+}
+
+
+
+
+.logo-and-item-section {
+  display: flex;
+  gap: 1rem;
+}
+
+
+.item-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+
+  /* grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+
+  column-gap: 1rem;
+  row-gap: 1rem; */
+}
+
+/* Company and Highlights START */
+.company-and-highlights {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.company-name {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.highlight {
+font-size: 12px;
+
+  color: white;
+  border-radius: 3rem 3rem 3rem 3rem;
+  text-align: center;
+  padding: 3px 8px 3px 8px;
+  
+}
+
+.highlight.new {
+  background-color: var(--color-primary);
+}
+.highlight.featured {
+  background-color: var(--color-neutral-very-dark-grayish-cyan);
+}
+
+.job-title {
+  grid-column: span 3;
+}
+
+/* Company and Highlights END */
+
+
+
+/* Job Detials START */
+.job-detials {
+  display: flex;
+  gap: 1rem;
+}
+
+.job-detials > p {
+  color: var(--color-neutral-dark-grayish-cyan);
+}
+
+
+
+
+/* Job Detials END */
+
+.topic-section {
+  display: flex;
+  
+  gap: 1rem;
+} 
+
+
+
+
+
+
+/* buttons START */
+.btn {
+border: none;
+color: var(--color-primary);
+background-color: var(--color-neutral-light-grayish-cyan-filter-tablets);
+
+padding: 0.3rem;
+
+cursor: pointer;
+}
+
+
+.btn-filter {
+  
+}
+
+/* buttons END */
+
+
+
+/* extra util classes */
+.hide {
+  display: none;
+}
