@@ -1,9 +1,8 @@
 
 
-
-// Generate card 
-
-// Get elements from dom 
+// vars
+const filterMenuSectionElement = document.querySelector(".filter-menu");
+let currentlyAppliedFilter = [];
 
 // Create elemenets 
 function createElements(data) {
@@ -137,8 +136,11 @@ function createElements(data) {
 
     allBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        addElemenetToFilterMenu(btn.textContent);
-        filterData(btn.textContent);
+        
+        if (!currentlyAppliedFilter.includes(btn.textContent)) {
+          addElemenetToFilterMenu(btn.textContent);
+          filterData(currentlyAppliedFilter);
+        } 
       });
     });
 
@@ -150,7 +152,7 @@ function createElements(data) {
   }
 }
 
-let currentlyAppliedFilter = [];
+
 // Add element to filter menu 
 function addElemenetToFilterMenu(filterText) {
 
@@ -162,6 +164,9 @@ function addElemenetToFilterMenu(filterText) {
     filterElement.textContent = filterText;
 
     filterElement.addEventListener("click", () => {
+
+
+
       displayWithoutFilter();
       filterElement.remove();
       let index = currentlyAppliedFilter.indexOf(filterText)
@@ -191,7 +196,7 @@ function addElemenetToFilterMenu(filterText) {
 
 // Initial dispaly 
 function displayWithoutFilter() {
-  document.querySelector("main").replaceChildren(); // remove content in main
+  document.querySelector("main").replaceChildren(filterMenuSectionElement); // remove content in main
 
   for (let i = 0; i < data.length; i++) {
       createElements(data[i]);
@@ -199,31 +204,102 @@ function displayWithoutFilter() {
 }
 
 // Search function 
-function filterData(filter) {
-  document.querySelector("main").replaceChildren(); // remove content in main
+function filterData(allFilters) {
+  document.querySelector("main").replaceChildren(filterMenuSectionElement); // remove content in main
+
+
+  // **Can filder by role, level, languages or tools**
+
+  let dataToDisplay = [];
+  
 
   for (let i = 0; i < data.length; i++) {
 
-    if (data[i].role === filter || data[i].level === filter) {
-      createElements(data[i]);
-    } else {
-      for (let j = 0; j < data[i].languages.length; j++) {
-   
-        if (data[i].languages[j] === filter) {
-          createElements(data[i]);
-        }
-      }
-
-      for (let j = 0; j < data[i].tools.length; j++) {
-   
-        if (data[i].tools[j] === filter) {
-          createElements(data[i]);
-        }
-      }
+    let filterPoints = 0;
+    let filterPointsToPass = 0;
 
 
+    // let role = "Backend";
+    // let level = "Junior";
+    // let languages = "Ruby";
+    // let tools = "RoR";
+
+    // let role = "Fullstack";
+    // let level = "Midweight";
+    // let languages = ["JavaScript", "Ruby"];
+    // let tools = ["Sass"];
+
+    let role = "Frontend";
+    let level = "Junior";
+    let languages = ["JavaScript"];
+    let tools = [];
+
+
+    function calcFilterPoints() {
+      if (role.length > 0) filterPointsToPass++;
+      if (level.length > 0) filterPointsToPass++;
+
+      if (languages.length > 0) filterPointsToPass += languages.length;
+      if (tools.length >   0) filterPointsToPass += tools.length;
     }
+
+    calcFilterPoints();
+
+    
+    if (data[i].role === role) {
+      filterPoints++;
+    } 
+    if (data[i].level === level) {
+      filterPoints++;
+    }
+
+    // filters languages array in each data object 
+    if (data[i].languages.length > 0) {
+      data[i].languages.forEach(lan => {
+
+        for (let j = 0; j < languages.length; j++) {
+          const element = languages[j];
+          if (lan === element) {
+            filterPoints++;
+          } 
+        }
+      })
+    }
+    
+    // filters tools array in each data object 
+    if (data[i].tools.length > 0) {
+      data[i].tools.forEach(tool => {
+
+        for (let j = 0; j < tools.length; j++) {
+          const element = tools[j];
+
+          // console.log(`${tool} : ${element} = ${tool === element}`);
+          if (tool === element) {
+            filterPoints++;
+          } 
+        }
+        
+      });
   }
+
+    
+    // console.log(`filterPoints = ${filterPoints}`);
+    // console.log(`filterPointsToPass = ${filterPointsToPass}`);
+    if (filterPoints === filterPointsToPass) {
+      console.log(data[i].role);
+      console.log(data[i].level);
+      console.log(data[i].languages);
+      console.log(data[i].tools);
+      console.log("--------------------");
+
+
+      dataToDisplay.push(data[i]);
+    }
+
+    
+  }
+
+  dataToDisplay.forEach(data => createElements(data)); // display filters data to main 
 }
 
 
