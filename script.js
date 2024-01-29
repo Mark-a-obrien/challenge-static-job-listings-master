@@ -66,10 +66,19 @@ function createElements(data) {
     topicSection.classList.add("topic-section");
 
     btnRole.classList.add("btn", "btn-role");
+    btnRole.dataset.filterType = "role";
+
     btnLevel.classList.add("btn", "btn-level");
+    btnLevel.dataset.filterType = "level";
+
+
     btnLanguage[0].classList.add("btn", "btn-language");
     btnLanguage[1].classList.add("btn", "btn-language");
     btnLanguage[2].classList.add("btn", "btn-language");
+
+    btnLanguage[0].dataset.filterType = "language";
+    btnLanguage[1].dataset.filterType = "language";
+    btnLanguage[2].dataset.filterType = "language";
   }
 
   // assign text content 
@@ -138,8 +147,22 @@ function createElements(data) {
       btn.addEventListener("click", () => {
         
         if (!currentlyAppliedFilter.includes(btn.textContent)) {
-          addElemenetToFilterMenu(btn.textContent);
+
+          let newFilter = { 
+            text : btn.textContent, 
+            filterType : btn.dataset.filterType
+          };
+
+          addElemenetToFilterMenu(newFilter);
+          currentlyAppliedFilter.push(newFilter);
+
+          
           filterData(currentlyAppliedFilter);
+
+          
+          
+          console.log(currentlyAppliedFilter);
+          console.log(btn.dataset.filterType);
         } 
       });
     });
@@ -154,31 +177,31 @@ function createElements(data) {
 
 
 // Add element to filter menu 
-function addElemenetToFilterMenu(filterText) {
+function addElemenetToFilterMenu(filter) {
 
-  if (!(currentlyAppliedFilter.includes(filterText))) { // adds filter to menu if it is not already selected
+  console.log(currentlyAppliedFilter.includes(filter, 0));
+
+  if (!(currentlyAppliedFilter.includes(filter, 0))) { // adds filter to menu if it is not already selected
     const filterMenuElement = document.querySelector(".filter-menu");
     const filterElement = document.createElement("button");
 
     filterElement.classList.add("btn-filter", "btn");
-    filterElement.textContent = filterText;
+    filterElement.textContent = filter.text;  
 
+    // filter event listener
     filterElement.addEventListener("click", () => {
 
-
-
-      displayWithoutFilter();
       filterElement.remove();
-      let index = currentlyAppliedFilter.indexOf(filterText)
+      let index = currentlyAppliedFilter.indexOf(filter)
       if (index > -1) { // only splice array when item is found
         currentlyAppliedFilter.splice(index, 1); // 2nd parameter means remove one item only
       }
+
+      filterData(currentlyAppliedFilter);
     });
 
-
-
     filterMenuElement.appendChild(filterElement);
-    currentlyAppliedFilter.push(filterText);
+    // currentlyAppliedFilter.push(filter);
   }
 }
 
@@ -229,11 +252,23 @@ function filterData(allFilters) {
     // let languages = ["JavaScript", "Ruby"];
     // let tools = ["Sass"];
 
-    let role = "Frontend";
-    let level = "Junior";
-    let languages = ["JavaScript"];
+    
+    let role = "";
+    let level = "";
+    let languages = [];
     let tools = [];
 
+    // set values to filters depending on data set filter type 
+    for (let i = 0; i < allFilters.length; i++) {
+
+      if (allFilters[i].filterType === "role") role = allFilters[i].text;
+
+      if (allFilters[i].filterType === "level") level = allFilters[i].text;
+
+      if (allFilters[i].filterType === "language") languages.push(allFilters[i].text);
+    }
+
+    
 
     function calcFilterPoints() {
       if (role.length > 0) filterPointsToPass++;
@@ -286,11 +321,11 @@ function filterData(allFilters) {
     // console.log(`filterPoints = ${filterPoints}`);
     // console.log(`filterPointsToPass = ${filterPointsToPass}`);
     if (filterPoints === filterPointsToPass) {
-      console.log(data[i].role);
-      console.log(data[i].level);
-      console.log(data[i].languages);
-      console.log(data[i].tools);
-      console.log("--------------------");
+      // console.log(data[i].role);
+      // console.log(data[i].level);
+      // console.log(data[i].languages);
+      // console.log(data[i].tools);
+      // console.log("--------------------");
 
 
       dataToDisplay.push(data[i]);
@@ -303,7 +338,11 @@ function filterData(allFilters) {
 }
 
 
-
+document.querySelector(".btn-clear").addEventListener("click", () => {
+  displayWithoutFilter();
+  currentlyAppliedFilter = [];  
+  document.querySelector(".filter-menu").replaceChildren(document.querySelector(".btn-clear"));
+});
 
 
 
