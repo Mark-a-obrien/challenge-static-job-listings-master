@@ -238,3 +238,15 @@ cursor: pointer;
 .hide {
   display: none;
 }
+
+
+
+
+
+/* Media Queries START */
+
+@media (max-width: 1250px) {
+  /* … */
+}
+
+/* Media Queries END */
