@@ -256,19 +256,22 @@ cursor: pointer;
 
 /* Media Queries START */
 @media (max-width: 1150px) { 
-  /* .job-card {
-    flex-direction: column;
-    gap: 0.5rem;
+  .filters-section {
+    display: grid;
 
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding: 0px;
 
-  } */
+    grid-template-columns:   repeat(auto-fit, minmax(100px, 1fr));
+  }
 
-  /* .logo-and-item-section {
-    flex-direction: column;
-    
-  } */
+  
+
+  .job-card, .filter-menu  {
+    width: 80%;
+    padding: 1rem;
+
+    align-items: flex-start;
+  }
 
   .company-logo {
     width: var(--mid-company-logo-size);
@@ -314,7 +317,7 @@ cursor: pointer;
 }
 
 /* mobile */
-@media (max-width: 430px) {
+@media (max-width: 450px) {
   h1, p, button{
     font-size: var(--font-size-body);
     font-family: 'League Spartan', sans-serif;
