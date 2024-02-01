@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <meta http-equiv='cache-control' content='no-cache'> 
-  <meta http-equiv='expires' content='0'> 
-  <meta http-equiv='pragma' content='no-cache'>
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
 
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap" rel="stylesheet"> 
+    <script src="script.js" defer></script>
 
-  <script src="script.js" defer></script>
+    <title>Frontend Mentor | Job Listings</title>
 
-  <title>Frontend Mentor | Job Listings</title>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="images/bg-header-desktop.svg" alt="blue header image" />
+    </header>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <main>
+      <section class="filter-menu hide">
+        <section class="filters-section"></section>
+        <section class="clear-section">
+          <button class="btn btn-clear">Clear</button>
+        </section>
+      </section>
 
-
-  <header>
-    <img src="images/bg-header-desktop.svg" alt="blue header image">
-  </header>
-
-  
-
-  <main>
-    <section class="filter-menu ">
-
-      <section class="filters-section"></section>
-      <section class="clear-section"><button class="btn btn-clear">Clear</button></section>
-      
-    </section>
-    
-
-    <!-- <div class="job-card job-card-featured ">
+      <!-- <div class="job-card job-card-featured ">
 
       <section class="logo-and-item-section">
         <img src="images/photosnap.svg" alt="company-logo" class="company-logo">
@@ -83,8 +91,6 @@
         
       </section>
     </div> -->
-  </main>
-
-  
-</body>
+    </main>
+  </body>
 </html>

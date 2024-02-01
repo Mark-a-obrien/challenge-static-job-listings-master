@@ -7,7 +7,6 @@
 
   --font-size-body: 15px;
 
-
   --desktop-company-logo-size: 88px;
   --mid-company-logo-size: 66px;
   --mobile-company-logo-size: 44px;
@@ -18,17 +17,18 @@
   margin: 0px;
 }
 
-h1, p, button{
+h1,
+p,
+button {
   font-size: var(--font-size-body);
-  font-family: 'League Spartan', sans-serif;
+  font-family: "League Spartan", sans-serif;
 }
 
 h1 {
-  font-size: 20px
+  font-size: 20px;
 }
 
-
-header img{
+header img {
   width: 100%;
   background-color: var(--color-primary);
   background-repeat: no-repeat;
@@ -42,7 +42,7 @@ main {
   gap: 1rem;
   justify-content: center;
   align-items: center;
-  
+
   background-color: var(--color-neutral-background);
 
   margin-bottom: 4rem;
@@ -52,7 +52,8 @@ main {
   display: flex;
 }
 
-.job-card, .filter-menu {
+.job-card,
+.filter-menu {
   /* border: 2px solid blue; */
   display: flex;
 
@@ -66,7 +67,7 @@ main {
   -webkit-box-shadow: 0px 10px 30px -6px var(--color-primary);
   -moz-box-shadow: 0px 10px 30px -6px var(--color-primary);
   box-shadow: 0px 10px 30px -6px var(--color-primary);
-  
+
   padding: 2rem;
 }
 
@@ -76,45 +77,35 @@ main {
   padding-right: 0.5rem;
 
   color: var(--color-primary);
-  }
+}
 
 .filter-menu .filter > p {
-  background-color: var(--color-neutral-light-grayish-cyan-filter-tablets);;
+  background-color: var(--color-neutral-light-grayish-cyan-filter-tablets);
   font-weight: 700;
   padding: 0.3rem;
 }
 
-
-
-
-
 .filters-section {
   display: flex;
-
 
   gap: 1rem;
 
   width: 80%;
-  
 }
-
 
 .job-card-featured {
   border-left: solid var(--color-primary) 6px;
 }
-
 
 .logo-and-item-section {
   display: flex;
   gap: 1rem;
 }
 
-
 .item-section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
 
   /* grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -136,13 +127,12 @@ main {
 }
 
 .highlight {
-font-size: 12px;
+  font-size: 12px;
 
   color: white;
   border-radius: 3rem 3rem 3rem 3rem;
   text-align: center;
   padding: 3px 8px 3px 8px;
-  
 }
 
 .highlight.new {
@@ -154,18 +144,14 @@ font-size: 12px;
 
 .job-title {
   grid-column: span 3;
-
-
 }
 
 .job-title:hover {
   cursor: pointer;
-  color : var(--color-primary)
+  color: var(--color-primary);
 }
 
 /* Company and Highlights END */
-
-
 
 /* Job Detials START */
 .job-detials {
@@ -177,35 +163,27 @@ font-size: 12px;
   color: var(--color-neutral-dark-grayish-cyan);
 }
 
-
-
-
 /* Job Detials END */
 
 .topic-section {
   display: flex;
-  
+
   gap: 1rem;
-} 
-
-
-
-
-
+}
 
 /* buttons START */
 .btn {
-border: none;
-color: var(--color-primary);
-background-color: var(--color-neutral-light-grayish-cyan-filter-tablets);
-text-align: center;
-align-content: center;
+  border: none;
+  color: var(--color-primary);
+  background-color: var(--color-neutral-light-grayish-cyan-filter-tablets);
+  text-align: center;
+  align-content: center;
 
-font-weight: 700;
+  font-weight: 700;
 
-padding: 0.3rem;
+  padding: 0.3rem;
 
-cursor: pointer;
+  cursor: pointer;
 }
 
 .btn-filter {
@@ -214,13 +192,12 @@ cursor: pointer;
 
   padding-right: 0.5rem;
   padding-left: 0.5rem;
-} 
+}
 
 .btn-clear {
   color: var(--color-neutral-dark-grayish-cyan);
   background-color: white;
 }
-
 
 .btn:hover {
   background-color: var(--color-primary);
@@ -232,41 +209,33 @@ cursor: pointer;
   color: white;
 }
 
-
 .btn-clear:hover {
   background-color: white;
   color: var(--color-primary);
-  
+
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 /* buttons END */
 
-
-
 /* extra util classes */
 .hide {
   display: none;
 }
 
-
-
-
-
 /* Media Queries START */
-@media (max-width: 1150px) { 
+@media (max-width: 1150px) {
   .filters-section {
     display: grid;
 
     padding: 0px;
 
-    grid-template-columns:   repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
 
-  
-
-  .job-card, .filter-menu  {
+  .job-card,
+  .filter-menu {
     width: 80%;
     padding: 1rem;
 
@@ -283,25 +252,11 @@ cursor: pointer;
 
     padding-top: 1rem;
 
-    grid-template-columns:   1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-@media (max-width: 750px) { 
-  /* .job-card {
-    flex-direction: column;
-    gap: 0.5rem;
-
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-
-  } */
-
-  /* .logo-and-item-section {
-    flex-direction: column;
-    
-  } */
-
+@media (max-width: 750px) {
   .company-logo {
     width: var(--mid-company-logo-size);
     height: var(--mid-company-logo-size);
@@ -312,39 +267,38 @@ cursor: pointer;
 
     padding-top: 1rem;
 
-    grid-template-columns:   1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-
-@media (max-width: 640px) { 
+@media (max-width: 640px) {
   .job-card {
     flex-direction: column;
     gap: 0.5rem;
 
     padding-top: 2rem;
     padding-bottom: 2rem;
-
   }
 
   .topic-section {
-
-    grid-template-columns:   1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
 /* mobile */
 @media (max-width: 450px) {
-  h1, p, button{
+  h1,
+  p,
+  button {
     font-size: var(--font-size-body);
-    font-family: 'League Spartan', sans-serif;
-  }
-  
-  h1 {
-    font-size: 15px
+    font-family: "League Spartan", sans-serif;
   }
 
-  header img{
+  h1 {
+    font-size: 15px;
+  }
+
+  header img {
     height: 100px;
   }
 
@@ -352,29 +306,26 @@ cursor: pointer;
     gap: 2rem;
   }
 
-  .filter-menu  {
+  .filter-menu {
     width: 70%;
     padding: 1rem;
   }
-
 
   .filters-section {
     display: grid;
 
     padding: 0px;
 
-    grid-template-columns:   repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
 
-  
-
-  .job-card, .filter-menu  {
+  .job-card,
+  .filter-menu {
     width: 80%;
     padding: 1rem;
 
     align-items: flex-start;
   }
-  
 
   .job-card {
     flex-direction: column;
@@ -382,13 +333,11 @@ cursor: pointer;
 
     padding-top: 2rem;
     padding-bottom: 2rem;
-
   }
 
   .logo-and-item-section {
     flex-direction: column;
     margin-top: -3.5rem;
-    
   }
 
   .company-logo {
@@ -405,18 +354,14 @@ cursor: pointer;
     border-spacing: 500px 50px;
 
     padding-bottom: 1rem;
-  
   }
-
-
-
 
   .topic-section {
     display: grid;
 
     padding-top: 1rem;
 
-    grid-template-columns:   1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
