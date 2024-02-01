@@ -251,7 +251,7 @@ function addElemenetToFilterMenu(filter) {
     div.classList.add("filter");
     filterElement.classList.add("btn-filter", "btn");
 
-
+    // text.classList.add("filter-text");
     text.textContent = filter.text;
     filterElement.textContent = "X";  
 
@@ -282,17 +282,6 @@ function addElemenetToFilterMenu(filter) {
     // currentlyAppliedFilter.push(filter);
   }
 }
-
-
-// testing START
-  // document.querySelectorAll(".btn-role").forEach(role => {
-  //   role.addEventListener("click", () => {
-  //     filterData("Frontend");
-  //     addElemenetToFilterMenu("Frontend");
-  //   })
-  // });
-// testing END
-
 
 
 // Initial dispaly 
@@ -393,15 +382,7 @@ function filterData(allFilters) {
   }
 
     
-    // console.log(`filterPoints = ${filterPoints}`);
-    // console.log(`filterPointsToPass = ${filterPointsToPass}`);
-    if (filterPoints === filterPointsToPass) {
-      // console.log(data[i].role);
-      // console.log(data[i].level);
-      // console.log(data[i].languages);
-      // console.log(data[i].tools);
-      // console.log("--------------------");
-
+  if (filterPoints === filterPointsToPass) {
 
       dataToDisplay.push(data[i]);
     }
