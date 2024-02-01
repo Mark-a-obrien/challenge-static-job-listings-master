@@ -287,15 +287,15 @@ cursor: pointer;
   }
 }
 
-@media (max-width: 830px) { 
-  .job-card {
+@media (max-width: 750px) { 
+  /* .job-card {
     flex-direction: column;
     gap: 0.5rem;
 
     padding-top: 2rem;
     padding-bottom: 2rem;
 
-  }
+  } */
 
   /* .logo-and-item-section {
     flex-direction: column;
@@ -311,6 +311,23 @@ cursor: pointer;
     display: grid;
 
     padding-top: 1rem;
+
+    grid-template-columns:   1fr 1fr;
+  }
+}
+
+
+@media (max-width: 640px) { 
+  .job-card {
+    flex-direction: column;
+    gap: 0.5rem;
+
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+  }
+
+  .topic-section {
 
     grid-template-columns:   1fr 1fr 1fr;
   }
