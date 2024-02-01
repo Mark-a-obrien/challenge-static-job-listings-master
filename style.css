@@ -9,6 +9,7 @@
 
 
   --desktop-company-logo-size: 88px;
+  --mid-company-logo-size: 66px;
   --mobile-company-logo-size: 44px;
 }
 
@@ -43,6 +44,8 @@ main {
   align-items: center;
   
   background-color: var(--color-neutral-background);
+
+  margin-bottom: 4rem;
 }
 
 .filter-menu {
@@ -77,7 +80,7 @@ main {
 
 .filter-menu .filter > p {
   background-color: var(--color-neutral-light-grayish-cyan-filter-tablets);;
-
+  font-weight: 700;
   padding: 0.3rem;
 }
 
@@ -198,6 +201,8 @@ background-color: var(--color-neutral-light-grayish-cyan-filter-tablets);
 text-align: center;
 align-content: center;
 
+font-weight: 700;
+
 padding: 0.3rem;
 
 cursor: pointer;
@@ -212,6 +217,7 @@ cursor: pointer;
 } 
 
 .btn-clear {
+  color: var(--color-neutral-dark-grayish-cyan);
   background-color: white;
 }
 
@@ -249,8 +255,66 @@ cursor: pointer;
 
 
 /* Media Queries START */
+@media (max-width: 1150px) { 
+  /* .job-card {
+    flex-direction: column;
+    gap: 0.5rem;
 
-@media (max-width: 373px) {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+  } */
+
+  /* .logo-and-item-section {
+    flex-direction: column;
+    
+  } */
+
+  .company-logo {
+    width: var(--mid-company-logo-size);
+    height: var(--mid-company-logo-size);
+  }
+
+  .topic-section {
+    display: grid;
+
+    padding-top: 1rem;
+
+    grid-template-columns:   1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 800px) { 
+  .job-card {
+    flex-direction: column;
+    gap: 0.5rem;
+
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+  }
+
+  /* .logo-and-item-section {
+    flex-direction: column;
+    
+  } */
+
+  .company-logo {
+    width: var(--mid-company-logo-size);
+    height: var(--mid-company-logo-size);
+  }
+
+  .topic-section {
+    display: grid;
+
+    padding-top: 1rem;
+
+    grid-template-columns:   1fr 1fr 1fr;
+  }
+}
+
+/* mobile */
+@media (max-width: 400px) {
   h1, p, button{
     font-size: var(--font-size-body);
     font-family: 'League Spartan', sans-serif;
@@ -271,13 +335,8 @@ cursor: pointer;
   .filter-menu  {
     width: 70%;
     padding: 1rem;
-    
-
   }
 
-  .filter-menu > * {
-    
-  }
 
   .filters-section {
     display: grid;
@@ -289,9 +348,11 @@ cursor: pointer;
 
   
 
-  .job-card,.filter-menu  {
+  .job-card, .filter-menu  {
     width: 80%;
     padding: 1rem;
+
+    align-items: flex-start;
   }
   
 
@@ -321,10 +382,21 @@ cursor: pointer;
 
   .job-detials {
     border-bottom: solid var(--color-neutral-dark-grayish-cyan) 1px;
+    border-spacing: 500px 50px;
+
+    padding-bottom: 1rem;
+  
   }
 
-  .job-detials > p {
-    font-size: 13px;
+
+
+
+  .topic-section {
+    display: grid;
+
+    padding-top: 1rem;
+
+    grid-template-columns:   1fr 1fr 1fr;
   }
 }
 
