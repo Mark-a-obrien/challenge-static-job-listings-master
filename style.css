@@ -6,6 +6,10 @@
   --color-neutral-very-dark-grayish-cyan: hsl(180, 14%, 20%);
 
   --font-size-body: 15px;
+
+
+  --desktop-company-logo-size: 88px;
+  --mobile-company-logo-size: 44px;
 }
 
 * {
@@ -245,8 +249,51 @@ cursor: pointer;
 
 /* Media Queries START */
 
-@media (max-width: 1250px) {
-  /* … */
+@media (max-width: 373px) {
+  h1, p, button{
+    font-size: var(--font-size-body);
+    font-family: 'League Spartan', sans-serif;
+  }
+  
+  h1 {
+    font-size: 15px
+  }
+
+  header img{
+    height: 100px;
+  }
+
+  main {
+    gap: 2rem;
+  }
+
+  
+
+  .job-card {
+    flex-direction: column;
+    gap: 0.5rem;
+
+    width: 70%;
+  }
+
+  .logo-and-item-section {
+    flex-direction: column;
+    margin-top: -3.5rem;
+    
+  }
+
+  .company-logo {
+    width: var(--mobile-company-logo-size);
+    height: var(--mobile-company-logo-size);
+  }
+
+  .item-section {
+    gap: 0.5rem;
+  }
+
+  .job-detials > p {
+    font-size: 13px;
+  }
 }
 
 /* Media Queries END */
