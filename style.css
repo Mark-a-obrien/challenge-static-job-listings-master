@@ -63,6 +63,32 @@ main {
   padding: 2rem;
 }
 
+.filter-menu .filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: var(--color-primary);
+  background-color: var(--color-neutral-light-grayish-cyan-filter-tablets);;
+}
+
+.filter-menu .filter > p {
+  padding: 0.3rem;
+}
+
+
+
+
+
+.filters-section {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  width: 80%;
+  
+}
 
 
 
@@ -153,15 +179,40 @@ font-size: 12px;
 border: none;
 color: var(--color-primary);
 background-color: var(--color-neutral-light-grayish-cyan-filter-tablets);
+text-align: center;
 
 padding: 0.3rem;
 
 cursor: pointer;
 }
 
-
 .btn-filter {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-clear {
+  background-color: white;
+}
+
+
+.btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-filter:hover {
+  background-color: var(--color-neutral-very-dark-grayish-cyan);
+  color: white;
+}
+
+
+.btn-clear:hover {
+  background-color: white;
+  color: var(--color-primary);
   
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 /* buttons END */

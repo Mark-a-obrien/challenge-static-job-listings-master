@@ -108,7 +108,7 @@ function createElements(data) {
     
 
     let lanAndTools = content.languages.concat(content.tools);
-    console.log(lanAndTools);
+    //console.log(lanAndTools);
     try {
       btnLanguage[0].textContent = lanAndTools[0];
       btnLanguage[1].textContent = lanAndTools[1];
@@ -119,12 +119,24 @@ function createElements(data) {
   }
 
 
+  function checkIfLanguageHasText(lang) {
+    if (lang.textContent != "") {
+      topicSection.appendChild(lang);
+    }
+  }
+
   // push elements to the DOM
   function pushElementsToDOM() {
     const mainElement = document.querySelector("main");
+    
+    
+    
 
+    topicSection.append(btnRole, btnLevel);
 
-    topicSection.append(btnRole, btnLevel, btnLanguage[0], btnLanguage[1], btnLanguage[2]);
+    for (let i = 0; i < btnLanguage.length; i++) {
+      checkIfLanguageHasText(btnLanguage[i]); 
+    }
 
     jobDetials.append(datePosted, dot[0], workSchedule, dot[1], location);
     companyAndHighlights.append(companyName, highlightNew, highlightFeatured);
@@ -136,6 +148,30 @@ function createElements(data) {
     mainElement.appendChild(jobCard);
   }
 
+  function checkIfFilterIsAlreadyOn(filters, newFilter) {
+
+    if (filters.length <= 0) {
+      return false;
+    }
+
+    for (let i = 0; i < filters.length; i++) {
+        let obj = filters[i];
+
+        // console.log(filters);
+
+        // console.log(`filters ${JSON.stringify(obj)}`);       
+        // console.log(`newFilter ${JSON.stringify(newFilter)}`);
+        // console.log();
+    
+        if (JSON.stringify(obj) === JSON.stringify(newFilter)) {
+            
+          // console.log(obj.length)
+          return true;
+        } 
+    }
+    return false;
+}
+
 
   //add event listeners 
   function addEventListernsToButtons() {
@@ -145,24 +181,27 @@ function createElements(data) {
 
     allBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        
-        if (!currentlyAppliedFilter.includes(btn.textContent)) {
 
-          let newFilter = { 
-            text : btn.textContent, 
-            filterType : btn.dataset.filterType
-          };
+        
+
+        let newFilter = { 
+          text : btn.textContent, 
+          filterType : btn.dataset.filterType
+        };
+
+        let foundFilter = checkIfFilterIsAlreadyOn(currentlyAppliedFilter, newFilter);
+        
+        //console.log(foundFilter);
+        if (!foundFilter) {
+
+          
 
           addElemenetToFilterMenu(newFilter);
           currentlyAppliedFilter.push(newFilter);
 
+          toggleDispalyOfFilterMenu();
           
           filterData(currentlyAppliedFilter);
-
-          
-          
-          console.log(currentlyAppliedFilter);
-          console.log(btn.dataset.filterType);
         } 
       });
     });
@@ -175,32 +214,65 @@ function createElements(data) {
   }
 }
 
+function toggleDispalyOfFilterMenu() {
+  const filterMenuElement = document.querySelector(".filter-menu");
+  filterMenuElement.classList.remove("hide");
+
+  if  (currentlyAppliedFilter.length <= 0) {
+      filterMenuElement.classList.add("hide");
+    } else {
+      filterMenuElement.classList.remove("hide");
+    }
+}
+
 
 // Add element to filter menu 
 function addElemenetToFilterMenu(filter) {
 
-  console.log(currentlyAppliedFilter.includes(filter, 0));
+  //console.log(currentlyAppliedFilter.includes(filter, 0));
 
   if (!(currentlyAppliedFilter.includes(filter, 0))) { // adds filter to menu if it is not already selected
     const filterMenuElement = document.querySelector(".filter-menu");
+    const filtersSectionElement  = document.querySelector(".filters-section");
+    
     const filterElement = document.createElement("button");
 
+    const div = document.createElement("div");
+    const text = document.createElement("p");
+
+    
+
+    div.classList.add("filter");
     filterElement.classList.add("btn-filter", "btn");
-    filterElement.textContent = filter.text;  
+
+
+    text.textContent = filter.text;
+    filterElement.textContent = "X";  
 
     // filter event listener
     filterElement.addEventListener("click", () => {
 
-      filterElement.remove();
+      
+
+      div.remove();
       let index = currentlyAppliedFilter.indexOf(filter)
       if (index > -1) { // only splice array when item is found
         currentlyAppliedFilter.splice(index, 1); // 2nd parameter means remove one item only
       }
 
+      toggleDispalyOfFilterMenu();
+
+      // if  (currentlyAppliedFilter.length <= 0) {
+      //   filterMenuElement.classList.add("hide");
+      // } else {
+      //   filterMenuElement.classList.remove("hide");
+      // }
+
       filterData(currentlyAppliedFilter);
     });
 
-    filterMenuElement.appendChild(filterElement);
+    div.append(text, filterElement);
+    filtersSectionElement.appendChild(div);
     // currentlyAppliedFilter.push(filter);
   }
 }
@@ -288,18 +360,23 @@ function filterData(allFilters) {
       filterPoints++;
     }
 
-    // filters languages array in each data object 
-    if (data[i].languages.length > 0) {
-      data[i].languages.forEach(lan => {
-
-        for (let j = 0; j < languages.length; j++) {
-          const element = languages[j];
-          if (lan === element) {
-            filterPoints++;
-          } 
-        }
-      })
+    // filters languages array & tool array in each data object 
+    function filterLanguagesAndTools (obj){
+      if (obj.length > 0) {
+        obj.forEach(lan => {
+  
+          for (let j = 0; j < languages.length; j++) {
+            const element = languages[j];
+            if (lan === element) {
+              filterPoints++;
+            } 
+          }
+        })
+      }
     }
+
+    filterLanguagesAndTools (data[i].languages);
+    filterLanguagesAndTools (data[i].tools);
     
     // filters tools array in each data object 
     if (data[i].tools.length > 0) {
@@ -308,7 +385,7 @@ function filterData(allFilters) {
         for (let j = 0; j < tools.length; j++) {
           const element = tools[j];
 
-          // console.log(`${tool} : ${element} = ${tool === element}`);
+          //console.log(`${tool} : ${element} = ${tool === element}`);
           if (tool === element) {
             filterPoints++;
           } 
@@ -337,11 +414,15 @@ function filterData(allFilters) {
   dataToDisplay.forEach(data => createElements(data)); // display filters data to main 
 }
 
-
+// Clears all filters 
 document.querySelector(".btn-clear").addEventListener("click", () => {
+  const filtersSectionElement  = document.querySelector(".filters-section");
+
+
   displayWithoutFilter();
   currentlyAppliedFilter = [];  
-  document.querySelector(".filter-menu").replaceChildren(document.querySelector(".btn-clear"));
+  filtersSectionElement.replaceChildren();
+  toggleDispalyOfFilterMenu();
 });
 
 
@@ -503,7 +584,7 @@ const data = [
     "tools": ["React", "Sass"]
   }
 ]
-console.log(data.length)
+//console.log(data.length)
 
 // generateCard();
 displayWithoutFilter()
