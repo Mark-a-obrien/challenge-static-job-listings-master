@@ -48,7 +48,7 @@ function createElements(data) {
 
     itemSection.classList.add("item-section");
 
-    companyAndHighlights.classList.add("company-name");
+    companyAndHighlights.classList.add("company-and-highlights");
     companyName.classList.add("company-name");
     highlightNew.classList.add("highlight", "new");
     highlightFeatured.classList.add("highlight", "featured");
@@ -82,16 +82,21 @@ function createElements(data) {
   }
 
   // assign text content 
-  function assignContent(
-      content
-      ) {
+  function assignContent(content) {
 
     companyName.textContent = content.company;
     companyLogo.src = content.logo;
     
+    console.log(content.new);
 
-    content.new ? highlightNew.classList.toggle("hide") : highlightNew.classList.toggle("hide");
-    content.new ? highlightFeatured.classList.toggle("hide") : highlightFeatured.classList.toggle("hide");
+    if (content.featured) {
+      highlightFeatured.classList.remove("hide");
+      jobCard.classList.add("job-card-featured");
+    } else {
+      highlightFeatured.classList.add("hide");
+    }
+
+    content.new ? highlightNew.classList.remove("hide") : highlightNew.classList.add("hide");
     highlightNew.textContent = "NEW!";
     highlightFeatured.textContent = "FEATURED";
 

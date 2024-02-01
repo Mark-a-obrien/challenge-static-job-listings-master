@@ -91,6 +91,10 @@ main {
 }
 
 
+.job-card-featured {
+  border-left: solid var(--color-primary) 6px;
+}
+
 
 .logo-and-item-section {
   display: flex;
@@ -142,6 +146,13 @@ font-size: 12px;
 
 .job-title {
   grid-column: span 3;
+
+
+}
+
+.job-title:hover {
+  cursor: pointer;
+  color : var(--color-primary)
 }
 
 /* Company and Highlights END */
@@ -180,6 +191,7 @@ border: none;
 color: var(--color-primary);
 background-color: var(--color-neutral-light-grayish-cyan-filter-tablets);
 text-align: center;
+align-content: center;
 
 padding: 0.3rem;
 
@@ -189,7 +201,10 @@ cursor: pointer;
 .btn-filter {
   background-color: var(--color-primary);
   color: white;
-}
+
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+} 
 
 .btn-clear {
   background-color: white;
