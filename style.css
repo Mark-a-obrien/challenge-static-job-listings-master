@@ -70,13 +70,14 @@ main {
 .filter-menu .filter {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  padding-right: 0.5rem;
 
   color: var(--color-primary);
-  background-color: var(--color-neutral-light-grayish-cyan-filter-tablets);;
-}
+  }
 
 .filter-menu .filter > p {
+  background-color: var(--color-neutral-light-grayish-cyan-filter-tablets);;
+
   padding: 0.3rem;
 }
 
@@ -86,7 +87,7 @@ main {
 
 .filters-section {
   display: flex;
-  align-items: center;
+
 
   gap: 1rem;
 
@@ -267,13 +268,40 @@ cursor: pointer;
     gap: 2rem;
   }
 
+  .filter-menu  {
+    width: 70%;
+    padding: 1rem;
+    
+
+  }
+
+  .filter-menu > * {
+    
+  }
+
+  .filters-section {
+    display: grid;
+
+    padding: 0px;
+
+    grid-template-columns:   repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  
+
+  .job-card,.filter-menu  {
+    width: 80%;
+    padding: 1rem;
+  }
   
 
   .job-card {
     flex-direction: column;
     gap: 0.5rem;
 
-    width: 70%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
   }
 
   .logo-and-item-section {
@@ -289,6 +317,10 @@ cursor: pointer;
 
   .item-section {
     gap: 0.5rem;
+  }
+
+  .job-detials {
+    border-bottom: solid var(--color-neutral-dark-grayish-cyan) 1px;
   }
 
   .job-detials > p {
